@@ -1,94 +1,15 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
-import { articles, jyotirlingas, mantras, videos } from '@/lib/data';
+import { articles, festivals, jyotirlingas, mantras, videos } from '@/lib/data';
 
-export default function HomePage() {
-  return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
+function SectionTitle({eyebrow,title,desc}:{eyebrow:string;title:string;desc?:string}){return <div className="mb-10 text-center"><p className="eyebrow">{eyebrow}</p><h2 className="mt-3 text-4xl font-black md:text-5xl">{title}</h2>{desc&&<p className="mx-auto mt-4 max-w-3xl text-white/65">{desc}</p>}</div>}
 
-        <section id="learn" className="section">
-          <div className="mb-10 max-w-3xl">
-            <p className="text-saffron">Knowledge Foundation</p>
-            <h2 className="mt-2 text-4xl font-black text-white">Begin learning about Lord Shiva</h2>
-            <p className="mt-4 text-white/65">These become full CMS-managed articles in the next phase.</p>
-          </div>
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {articles.map(([title, desc]) => (
-              <article className="card" key={title}>
-                <h3 className="text-xl font-bold text-white">{title}</h3>
-                <p className="mt-3 text-white/65">{desc}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="mantras" className="section">
-          <div className="mb-10 max-w-3xl">
-            <p className="text-saffron">Chant & Understand</p>
-            <h2 className="mt-2 text-4xl font-black text-white">Shiva Mantra Library</h2>
-          </div>
-          <div className="grid gap-5 lg:grid-cols-3">
-            {mantras.map((m) => (
-              <article className="card" key={m.name}>
-                <h3 className="text-2xl font-bold text-white">{m.name}</h3>
-                <p className="mt-5 text-3xl text-saffron">{m.sanskrit}</p>
-                <p className="mt-5 text-white/70">{m.meaning}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="jyotirlingas" className="section">
-          <div className="mb-10 max-w-3xl">
-            <p className="text-saffron">Sacred Geography</p>
-            <h2 className="mt-2 text-4xl font-black text-white">The 12 Jyotirlingas</h2>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {jyotirlingas.map((name, i) => (
-              <div className="card" key={name}>
-                <span className="text-sm text-saffron">{String(i + 1).padStart(2, '0')}</span>
-                <h3 className="mt-2 text-xl font-bold text-white">{name}</h3>
-                <p className="mt-2 text-sm text-white/60">Dedicated page with story, travel guide, map and references.</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="videos" className="section">
-          <div className="mb-10 max-w-3xl">
-            <p className="text-saffron">Curated References</p>
-            <h2 className="mt-2 text-4xl font-black text-white">YouTube Learning & Devotion</h2>
-            <p className="mt-4 text-white/65">Embed official YouTube references. Do not download or re-upload copyrighted videos.</p>
-          </div>
-          <div className="grid gap-5 lg:grid-cols-3">
-            {videos.map(([title, url]) => (
-              <article className="card" key={title}>
-                <div className="aspect-video overflow-hidden rounded-2xl border border-white/10">
-                  <iframe className="h-full w-full" src={url} title={title} allowFullScreen />
-                </div>
-                <h3 className="mt-4 text-xl font-bold text-white">{title}</h3>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="roadmap" className="section">
-          <div className="card grid gap-8 lg:grid-cols-3">
-            <div>
-              <p className="text-saffron">Next Phase</p>
-              <h2 className="mt-2 text-4xl font-black text-white">CMS and PostgreSQL</h2>
-            </div>
-            <div className="lg:col-span-2 grid gap-4 md:grid-cols-3">
-              {['Strapi CMS', 'Neon PostgreSQL', 'Cloudflare Pages'].map((x) => <div className="rounded-2xl bg-white/5 p-5" key={x}><b className="text-white">{x}</b><p className="mt-2 text-sm text-white/60">Production-ready upgrade path.</p></div>)}
-            </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </>
-  );
-}
+export default function Home(){return <><Navbar/><Hero/><main>
+<section id="learn" className="section bg-white text-slate-950"><div className="container"><div className="mb-10 text-center"><p className="eyebrow">Knowledge Foundation</p><h2 className="mt-3 text-4xl font-black md:text-5xl">Learn about Lord Shiva</h2><p className="mx-auto mt-4 max-w-3xl text-slate-600">Begin with respectful, original summaries. Each topic can later become a full CMS-managed article.</p></div><div className="grid gap-6 md:grid-cols-3">{articles.map(a=><article key={a.title} className="rounded-3xl border p-6 shadow-sm"><h3 className="text-xl font-bold">{a.title}</h3><p className="mt-3 text-slate-600">{a.text}</p></article>)}</div></div></section>
+<section id="mantras" className="section"><div className="container"><SectionTitle eyebrow="Chant & Understand" title="Shiva Mantra Library" desc="Sanskrit, transliteration, meaning and practice guidance."/><div className="grid gap-6 md:grid-cols-3">{mantras.map(m=><article key={m.name} className="card"><h3 className="text-2xl font-bold text-gold">{m.name}</h3><p className="mt-4 text-2xl">{m.sanskrit}</p><p className="mt-4 text-white/70">{m.meaning}</p></article>)}</div></div></section>
+<section id="videos" className="section bg-white text-slate-950"><div className="container"><div className="mb-10 text-center"><p className="eyebrow">Curated References</p><h2 className="mt-3 text-4xl font-black md:text-5xl">YouTube Learning & Devotion</h2><p className="mx-auto mt-4 max-w-3xl text-slate-600">Embed official YouTube videos. Do not download or re-upload copyrighted videos.</p></div><div className="grid gap-6 md:grid-cols-3">{videos.map(v=><article key={v.title} className="overflow-hidden rounded-3xl border bg-white shadow-sm"><iframe className="aspect-video w-full" src={v.url} title={v.title} allowFullScreen/><div className="p-5 font-bold">{v.title}</div></article>)}</div></div></section>
+<section id="jyotirlingas" className="section"><div className="container"><SectionTitle eyebrow="Sacred Geography" title="The 12 Jyotirlingas" desc="Dedicated pages can include history, travel guidance, maps, darshan details and official references."/><div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">{jyotirlingas.map((j,i)=><div key={j} className="card"><span className="text-gold">{String(i+1).padStart(2,'0')}</span><h3 className="mt-2 text-xl font-bold">{j}</h3></div>)}</div></div></section>
+<section id="temples" className="section bg-white text-slate-950"><div className="container"><div className="mb-10 text-center"><p className="eyebrow">Temple Directory</p><h2 className="mt-3 text-4xl font-black md:text-5xl">Future Temple Knowledge Base</h2></div><div className="grid gap-6 md:grid-cols-3"><article className="rounded-3xl border p-6"><h3 className="font-bold">India</h3><p className="mt-3 text-slate-600">Kashi Vishwanath, Kedarnath, Somnath, Mahakaleshwar and more.</p></article><article className="rounded-3xl border p-6"><h3 className="font-bold">Nepal</h3><p className="mt-3 text-slate-600">Pashupatinath and Himalayan Shiva traditions.</p></article><article className="rounded-3xl border p-6"><h3 className="font-bold">Global</h3><p className="mt-3 text-slate-600">Shiva temples in UAE, UK, USA, Mauritius, Australia and beyond.</p></article></div></div></section>
+<section id="festivals" className="section"><div className="container"><SectionTitle eyebrow="Festivals" title="Observances and Vrat"/><div className="grid gap-4 md:grid-cols-4">{festivals.map(f=><div key={f} className="card"><h3 className="text-xl font-bold">{f}</h3><p className="mt-3 text-white/65">Significance, rituals and learning resources.</p></div>)}</div></div></section>
+</main><Footer/></>}

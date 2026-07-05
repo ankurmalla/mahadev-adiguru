@@ -1,27 +1,15 @@
-# Mahadev Adi Guru v2.0
+# Mahadev Adi Guru v2
 
-Next.js + Tailwind + TypeScript starter for https://www.mahadevadiguru.com
+Working Next.js static-export project for Cloudflare Pages.
 
-## Local run
+## Cloudflare Pages settings
+- Framework preset: None
+- Build command: `npm run build`
+- Build output directory: `out`
+- Root directory: empty
 
+## Local test
 ```bash
 npm install
-npm run dev
-```
-
-## Cloudflare Pages
-
-Framework preset: Next.js
-Build command: `npm run build`
-Build output directory: `out`
-Root directory: empty
-
-## Replace old repo content
-
-Copy these files to your GitHub repo root, then:
-
-```bash
-git add .
-git commit -m "Upgrade to Mahadev Adi Guru v2 Next.js foundation"
-git push origin main
+npm run build
 ```
