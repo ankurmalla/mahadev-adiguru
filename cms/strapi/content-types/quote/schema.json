@@ -1,1 +1,0 @@
-{"kind":"collectionType","collectionName":"quotes","info":{"singularName":"quote","pluralName":"quotes","displayName":"Quote"},"options":{"draftAndPublish":true},"attributes":{"quote":{"type":"text","required":true},"source":{"type":"string"},"language":{"type":"string"},"showOnHomepage":{"type":"boolean","default":false}}}
